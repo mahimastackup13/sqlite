@@ -1,3 +1,4 @@
+// import 'package:provider /provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -19,8 +20,8 @@ class DatabaseHelper {
     return openDatabase(
       path,
       version: 1,
-      onCreate: (db, version) {
-        return db.execute(
+      onCreate: (db, version) async {
+        await db.execute(
           '''
           CREATE TABLE contacts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
